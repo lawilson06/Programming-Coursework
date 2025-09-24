@@ -1,0 +1,97 @@
+class PrimaryWindow():
+    Declarations
+	private datetime current_date
+	private button shopping_cart_button
+	private combobox shopping_cart_dropdown
+	private button quit
+	private editbox user_name
+	private editbox user_date
+	private ShoppingCart secondary_window
+	private DisplayCarts display
+
+    public PrimaryWindow():
+	quit.click(close)
+	shopping_cart_button.click(secondary_window_make_visible)
+	shopping_cart_dropdown.select(load_shopping_cart)
+	user_date.populate(current_date)
+
+    private secondary_window_make_visible:
+	secondary_window = ShoppingCart()
+
+    private insert_data:
+	user_name insert into database
+	user_date insert into database
+
+    private load_shpoping_cart
+	display = DisplayCarts()
+
+class DisplayCarts:
+    Declarations
+	private table shopping_cart_table
+	private button display_cost
+	private button display_descriptions
+
+    public DisplayCarts()
+	retrieve_user_data()
+	retrieve_cart_data()
+	calculate_cart_total()
+	display_cost.click(display_cart_total)
+	display_descriptions.click(display_descriptions)
+
+    private retrieve_user_data()
+	user_data fetch from database
+
+    prviate retrieve_cart_data()
+	cart_data fetch from database
+
+class ShoppingCart
+    Declarations
+	private float cart_total
+	private integer cart_quantity
+	private db_connection payload
+	private button add_item
+	private button update_item
+	private button delete_item
+	
+    public ShoppingCart()
+	populate_table()
+	table_cell.click(update_button.visible)
+	table_cell.click(delete_button.visible)
+	add_item.click(add)
+	update_item.click(update)
+	delete_item.click(delete)
+
+    private add
+	item = ItemToPurchase()
+
+    private update
+	item = ItemToPurchase()
+
+    private delete
+	payload find record database
+
+    private populate_table
+	table_data fetch from database
+
+class ItemToPurchase
+    Declarations
+	private string shopping_id
+	private integer item_id
+	private string item_name
+	private float price
+	private integer quantity
+	private string description
+	private button add_item
+	private button update_item
+    
+    public ItemToPurchase()
+       add_item.click(insert)
+       update_item.click(update)
+
+    public insert
+       item_name, price, quantity, description insert into database
+
+start
+    main_window = PrimaryWindow()
+    main_window.execute()
+stop
